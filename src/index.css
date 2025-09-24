@@ -1,3 +1,4 @@
+/* index.css */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,64 +6,243 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #282c34;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
+  min-height: 100vh;
 }
 
 .App {
-  text-align: center;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
+/* Header Styles */
 header {
-  background-color: #20232a;
-  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.username {
+  font-weight: 500;
+}
+
+.sign-out-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sign-out-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Main Content */
 section {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 1rem;
+}
+
+/* Loading */
+.loading, .loading-container {
+  display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  height: 200px;
+  font-size: 1.2rem;
 }
 
+/* Sign In Styles */
+.sign-in-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.auth-methods {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  padding: 0.3rem;
+}
+
+.auth-method-btn {
+  flex: 1;
+  padding: 0.7rem;
+  border: none;
+  background: transparent;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.auth-method-btn.active {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.auth-form {
+  margin-top: 2rem;
+}
+
+.google-sign-in-btn, .anonymous-sign-in-btn {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.google-sign-in-btn {
+  background: #4285f4;
+  color: white;
+}
+
+.anonymous-sign-in-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.google-sign-in-btn:hover, .anonymous-sign-in-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Chat Room Styles */
 main {
   flex-grow: 1;
-  width: 100%;
-  max-width: 760px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  overflow-y: scroll;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  min-height: 400px;
+  max-height: 70vh;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Custom Scrollbar */
+main::-webkit-scrollbar {
+  width: 8px;
+}
+
+main::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+main::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Message Styles */
 .message {
   display: flex;
-  align-items: center;
-  margin-bottom: 10px;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  animation: slideIn 0.3s ease;
 }
 
-.message p {
-  background-color: #3b3f46;
-  border-radius: 18px;
-  padding: 10px 15px;
-  max-width: 60%;
-  margin: 0 10px;
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .message img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #fff; /* Fallback for no photoURL */
+  margin-right: 0.8rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.message-content {
+  max-width: 70%;
+}
+
+.message-author {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.message p {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 0.8rem 1.2rem;
+  margin: 0;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  word-wrap: break-word;
 }
 
 .sent {
@@ -70,47 +250,125 @@ main {
   align-self: flex-end;
 }
 
+.sent img {
+  margin-right: 0;
+  margin-left: 0.8rem;
+}
+
+.sent .message-content {
+  text-align: right;
+}
+
 .sent p {
-  background-color: #007bff;
-  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
 }
 
 .received {
-  flex-direction: row;
   align-self: flex-start;
 }
 
+/* Form Styles */
 form {
   display: flex;
-  width: 100%;
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #20232a;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 form input {
   flex-grow: 1;
   border: none;
-  padding: 10px;
+  padding: 1rem 1.5rem;
   font-size: 16px;
-  border-radius: 18px;
-  margin-right: 10px;
-  background-color: #3b3f46;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1);
   color: white;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+form input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+form input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
 form button {
-  background-color: #007bff;
+  background: rgba(255, 255, 255, 0.2);
   color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 1rem 1.5rem;
+  border-radius: 25px;
   cursor: pointer;
   font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+form button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 form button:disabled {
-  background-color: #6c757d;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .user-info {
+    gap: 0.5rem;
+  }
+  
+  .username {
+    display: none;
+  }
+  
+  section {
+    padding: 0.5rem;
+  }
+  
+  .sign-in-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .auth-methods {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .message-content {
+    max-width: 85%;
+  }
+  
+  form {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  form button {
+    align-self: flex-end;
+    width: auto;
+    min-width: 100px;
+  }
 }
